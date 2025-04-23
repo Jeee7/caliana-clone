@@ -16,9 +16,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _logoClicked = false;
   @override
   void initState() {
-    super.initState();  
+    super.initState();
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.grey[100],
@@ -31,115 +32,144 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+      // padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
       decoration: BoxDecoration(
         color: Colors.grey[100],
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Image.asset(
-                'assets/logo/caliana-logo.png',
-                height: 32,
-                width: 32,
-              ),
-              gapWidth(32),
-              SizedBox(
-                width: 180,
-                height: 48,
-                child: SizedBox(
-                  width: 160,
+          Padding(
+            padding: const EdgeInsets.all(32),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _logoClicked = true;
+                    });
+                  },
+                  child: Image.asset(
+                    'assets/logo/caliana-logo.png',
+                    height: 32,
+                    width: 32,
+                  ),
+                ),
+                gapWidth(32),
+                SizedBox(
+                  width: 180,
                   height: 48,
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    alignment: Alignment.centerRight,
-                    children: [
-                      Positioned.fill(
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Transform.translate(
-                            offset: const Offset(-16, 0),
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints(
-                                maxWidth: 260,
-                              ),
-                              child: Container(
-                                margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.fromLTRB(8, 8, 24, 8),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(16),
+                  child: SizedBox(
+                    width: 160,
+                    height: 48,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      alignment: Alignment.centerRight,
+                      children: [
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Transform.translate(
+                              offset: const Offset(-16, 0),
+                              child: ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                  maxWidth: 260,
                                 ),
-                                child: Text(
-                                  Utility.truncateText('Operator Ziddan'),
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    color: Colors.grey[600],
-                                    fontSize: 14,
+                                child: Container(
+                                  margin: const EdgeInsets.only(right: 8),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 8, 24, 8),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Text(
+                                    Utility.truncateText('Operator Ziddan'),
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: Colors.grey[600],
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 3,
+                        Positioned(
+                          right: 0,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 3,
+                              ),
                             ),
-                          ),
-                          child: ClipOval(
-                            child: Container(
-                              color: const Color.fromARGB(255, 178, 234, 241),
-                              height: 40,
-                              width: 40,
-                              child: SvgPicture.asset(
-                                'assets/icons/profile.svg',
+                            child: ClipOval(
+                              child: Container(
+                                color: const Color.fromARGB(255, 178, 234, 241),
                                 height: 40,
                                 width: 40,
+                                child: SvgPicture.asset(
+                                  'assets/icons/profile.svg',
+                                  height: 40,
+                                  width: 40,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: const Icon(
-                  Icons.notifications_none,
-                  size: 28,
-                  color: Colors.black,
-                ),
-              )
-            ],
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(
+                    Icons.notifications_none,
+                    size: 28,
+                    color: Colors.black,
+                  ),
+                )
+              ],
+            ),
           ),
           gapHeight(16),
           SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DateAndClock(),
-                gapHeight(16),
-                searchBar(),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      DateAndClock(),
+                      gapHeight(16),
+                      searchBar(),
+                      gapHeight(32),
+                    ],
+                  ),
+                ),
+                if (_logoClicked == true) ...[
+                  const FeatureList(),
+                ] else ...[
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 32),
+                    child: FeatureList(),
+                  ),
+                ],
                 gapHeight(32),
-                const FeatureList(),
-                gapHeight(32),
-                const DailyVisitor(),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 32),
+                  child: DailyVisitor(),
+                ),
               ],
             ),
           ),
