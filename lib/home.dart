@@ -18,9 +18,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    super.initState();
+    super.initState();  
 
-    // Set the status bar color to white with dark icons
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.grey[100],
       statusBarIconBrightness: Brightness.dark,

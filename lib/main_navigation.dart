@@ -1,6 +1,9 @@
+import 'package:caliana_clone/form/form_registration.dart';
+import 'package:caliana_clone/form/pre_registration_screen.dart';
 import 'package:caliana_clone/home.dart';
 import 'package:caliana_clone/utility/divider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -25,57 +28,61 @@ class _MainNavigationState extends State<MainNavigation> {
     });
   }
 
-  Widget _buildFabOption(String label, Widget iconWidget) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          constraints: const BoxConstraints(maxWidth: 140),
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: const Offset(0, 1),
+  Widget _buildFabOption(String label, Widget iconWidget, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            constraints: const BoxConstraints(maxWidth: 140),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
+            child: Text(
+              label,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 12,
+                decoration: TextDecoration.none,
+                color: Colors.black,
+                fontWeight: FontWeight.w700,
               ),
-            ],
-          ),
-          child: Text(
-            label,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 12,
-              decoration: TextDecoration.none,
-              color: Colors.black,
-              fontWeight: FontWeight.w700,
             ),
           ),
-        ),
-        const SizedBox(width: 10),
-        Container(
-          width: 42.0,
-          height: 42.0,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 204, 230, 241),
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: const Offset(0, 1),
-              ),
-            ],
+          const SizedBox(width: 10),
+          Container(
+            width: 42.0,
+            height: 42.0,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 204, 230, 241),
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
+            child: Center(
+              child: iconWidget,
+            ),
           ),
-          child: Center(
-            child: iconWidget,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -88,12 +95,14 @@ class _MainNavigationState extends State<MainNavigation> {
       debugShowCheckedModeBanner: false,
       home: Stack(
         children: [
-          // Main Scaffold
           Scaffold(
+            // resizeToAvoidBottomInset: true,
             body: IndexedStack(
               index: _selectedIndex,
               children: const <Widget>[
-                HomeScreen(),
+                SingleChildScrollView(
+                  child: HomeScreen(),
+                ),
                 // ProfilePage(),
               ],
             ),
@@ -212,8 +221,6 @@ class _MainNavigationState extends State<MainNavigation> {
               ),
             ),
           ),
-
-          // Overlay when FAB is clicked
           if (_isClicked)
             Positioned.fill(
               child: GestureDetector(
@@ -223,12 +230,10 @@ class _MainNavigationState extends State<MainNavigation> {
                 ),
               ),
             ),
-
-          // FAB Options when expanded
           if (_isClicked)
             Positioned(
               bottom: 180,
-              right: (screenWidth - 45) / 2, // Center the row
+              right: (screenWidth - 45) / 2,
               child: _buildFabOption(
                 'Registrasi',
                 Image.asset(
@@ -237,6 +242,12 @@ class _MainNavigationState extends State<MainNavigation> {
                   height: 20,
                   color: Colors.lightBlue,
                 ),
+                () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const RegistrationForm()),
+                  );
+                },
               ),
             ),
           if (_isClicked)
@@ -251,6 +262,14 @@ class _MainNavigationState extends State<MainNavigation> {
                   height: 20,
                   color: Colors.lightBlue,
                 ),
+                () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const PreRegistrationScreen(),
+                    ),
+                  );
+                },
               ),
             ),
         ],

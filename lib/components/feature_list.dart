@@ -49,7 +49,11 @@ class _FeatureListState extends State<FeatureList> {
 
   int selectedTabIndex = 0;
 
-  List<String> tabs = ['Semua Fitur', 'Visitor Management System', 'Populer'];
+  List<String> tabs = [
+    'Semua Fitur',
+    'Visitor Management System',
+    'Access Control System,'
+  ];
 
   Widget featuresTab() {
     return SizedBox(
@@ -170,24 +174,107 @@ class _FeatureListState extends State<FeatureList> {
       case 1:
         return Column(
           children: [
-            Icon(Icons.favorite, size: 40, color: Colors.red),
-            const SizedBox(height: 8),
-            const Text(
-              'Favorit',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/icons/dasbor.png',
+                  width: 40,
+                  height: 40,
+                ),
+                Image.asset(
+                  'assets/icons/visitor-list.png',
+                  width: 25,
+                  height: 25,
+                ),
+                Image.asset(
+                  'assets/icons/resident.png',
+                  width: 30,
+                  height: 30,
+                ),
+              ],
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Dasbor',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        'Daftar',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                      Text(
+                        'Pengunjung',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black.withOpacity(0.5),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'Residen',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         );
       case 2:
-        return Column(
-          children: [
-            Icon(Icons.star, size: 40, color: Colors.amber),
-            const SizedBox(height: 8),
-            const Text(
-              'Populer',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-            ),
-          ],
+        return Padding(
+          padding: const EdgeInsets.only(left: 32),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'assets/icons/dasbor.png',
+                    width: 40,
+                    height: 40,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  gapWidth(4),
+                  Text(
+                    'Dasbor',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         );
       default:
         return Container();
