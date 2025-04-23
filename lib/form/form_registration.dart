@@ -422,6 +422,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   },
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.cyan,
+                    side: const BorderSide(color: Colors.cyan),
                   ),
                   child: const Text("Batal"),
                 )

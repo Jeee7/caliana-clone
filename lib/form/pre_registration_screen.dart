@@ -514,7 +514,7 @@ class _PreRegistrationScreenState extends State<PreRegistrationScreen> {
                     foregroundColor:
                         isFormValid() ? Colors.white : Colors.black87,
                   ),
-                  child: const Text("Check In"),
+                  child: const Text("Kirim Undangan"),
                 ),
                 OutlinedButton(
                   onPressed: () async {
@@ -524,6 +524,7 @@ class _PreRegistrationScreenState extends State<PreRegistrationScreen> {
                   },
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.cyan,
+                    side: const BorderSide(color: Colors.cyan),
                   ),
                   child: const Text("Batal"),
                 )
