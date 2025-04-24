@@ -9,7 +9,7 @@ UI Cloning: The main objective was to replicate the UI as closely as possible to
 
 Adjustments:
 
-Icons: Some icons couldn't be matched exactly due to the lack of access to the original assets. I’ve used similar alternatives where necessary.
+Icons: Some icons couldn't be matched exactly to the original assets. I’ve used similar alternatives where necessary.
 
 Padding & Alignment: Minor adjustments were made to the padding and spacing in some parts of the UI to improve consistency and alignment.
 
