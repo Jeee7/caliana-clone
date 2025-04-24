@@ -1,16 +1,33 @@
 # caliana_clone
 
-A new Flutter project.
+Cloning Caliana - Operator Mobile App
+This repository contains the solution for the assignment to clone the Caliana Operator Mobile App as instructed.
 
-## Getting Started
+Features
+UI Cloning: The main objective was to replicate the UI as closely as possible to the original.
 
-This project is a starting point for a Flutter application.
+Adjustments:
 
-A few resources to get you started if this is your first Flutter project:
+Icons: Some icons couldn't be matched exactly due to the lack of access to the original assets. I’ve used similar alternatives where necessary.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Padding & Alignment: Minor adjustments were made to the padding and spacing in some parts of the UI to improve consistency and alignment.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Setup
+1. Clone the repository:
+  git clone https://github.com/Jeee7/caliana-clone.git
+
+2. Navigate to the project directory:
+  cd caliana-clone
+
+3. Install dependencies:
+  flutter pub get
+
+4. Run the app:
+  flutter run
+
+Notes
+- This project may contain some minor differences from the original in terms of padding, icons, and minor layout adjustments.
+- Flutter Version: This project was developed using Flutter 3.24.3. Please ensure you're using the same version for consistency.
+- FVM Usage: I am using Flutter Version Manager (FVM) for flexibility across multiple projects with different Flutter versions. This project is using Flutter 3.24.3 and Dart SDK 3.5.3.
+- 
+Thank you for considering my submission!
