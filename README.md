@@ -1,6 +1,7 @@
 # caliana_clone
 
 Cloning Caliana - Operator Mobile App
+
 This repository contains the solution for the assignment to clone the Caliana Operator Mobile App as instructed.
 
 Features
